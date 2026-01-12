@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Apps Script Integration</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #output { white-space: pre; background: #f4f4f4; padding: 10px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+<h2>Live Data from Google Apps Script</h2>
+<div id="output">Loading…</div>
+
+<script>
+  const endpoint = "https://script.google.com/macros/s/AKfycbxDMSUQGEPUcqspd3JhYX_09_ENXlwORq7J_KCDEsc8JbprtQQZBlITe_WxicKgWhJz/exec";
+
+  fetch(endpoint)
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("output").textContent =
+        JSON.stringify(data, null, 2);
+    })
+    .catch(err => {
+      document.getElementById("output").textContent =
+        "Error: " + err;
+    });
+</script>
+
+</body>
+</html>
